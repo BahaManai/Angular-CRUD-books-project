@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
+// Décorateur
 @Component({
   selector: 'app-root',
-  standalone: true,
+  standalone: true, // mayestha9ch module
   imports: [RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css' //optionel
 })
 export class AppComponent {
-  title = 'first-app';
+  title = 'Baha Manai\'s first angular app';
 }
