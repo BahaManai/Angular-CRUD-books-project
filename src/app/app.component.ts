@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { BookslistComponent } from './bookslist/bookslist.component';
+
 
 // Décorateur
 @Component({
   selector: 'app-root',
   standalone: true, // mayestha9ch module
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, BookslistComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css' //optionel
 })
