@@ -13,4 +13,5 @@ import { BookslistComponent } from './bookslist/bookslist.component';
 })
 export class AppComponent {
   title = 'Baha Manai\'s first angular app';
+  logo = "https://upload.wikimedia.org/wikipedia/commons/f/f7/Angular_gradient.png";
 }
