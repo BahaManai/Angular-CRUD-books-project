@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { BookAddComponent } from "../book-add/book-add.component";
+import { Book } from '../Model/book';
 
 @Component({
   selector: 'app-bookslist',
@@ -9,15 +10,19 @@ import { BookAddComponent } from "../book-add/book-add.component";
   styleUrl: './bookslist.component.css'
 })
 export class BookslistComponent {
-  title = "List des livres :";
+  title = "Liste des livres :";
   books = [
-    {id : 1, title : "Power of habits", author : "...", price : 35},
-    {id : 2, title : "The Slight age", author : "Jeff Olsen", price : 40},
-    {id : 3, title : "Atomic Habits 3", author : "James Clear", price : 50}
-  ]
+    new Book(1, "Power of habits", "...",  35),
+    new Book( 2,  "The Slight age",  "Jeff Olsen", 40),
+    new Book( 3,  "Atomic Habits 3",  "James Clear",  50)
+  ];
   action ="";
   changeAction(action : string){
     //this est obligatoire pour utiliser les attributs de la classe
     this.action = action;
+  }
+  addBook(book:Book){
+    this.books = [...this.books,book];
+    this.changeAction("");
   }
 }

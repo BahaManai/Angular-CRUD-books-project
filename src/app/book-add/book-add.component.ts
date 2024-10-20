@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Book } from '../Model/book';
 
 @Component({
   selector: 'app-book-add',
@@ -9,14 +10,17 @@ import { Component, Input } from '@angular/core';
 })
 export class BookAddComponent {
   @Input() lastId = 0; // lire un attribut du sélecteur
+  @Output() bookCreated = new EventEmitter <Book>();
   addBook(title : string, author:string, price:number)
   {
-    const newBook = {
-      id : this.lastId +1 ,
-      title : title,
-      author : author,
-      price : price
-    };
-    console.log(newBook);
+    const newBook = new Book(
+      this.lastId +1,
+      title,
+      author,
+      price
+  );
+  // Lancer l'événement
+  this.bookCreated.emit(newBook);
+  console.log(newBook);
   }
 }

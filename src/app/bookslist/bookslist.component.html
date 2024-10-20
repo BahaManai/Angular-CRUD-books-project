@@ -2,11 +2,12 @@
 <h2>{{title}}</h2>
  <!-- 2 eme type de binding : event Binding -->
 <button class="btn btn-success mb-3" (click)="changeAction('add')">Ajouter un livre</button>
-
 <!-- Affichage conditionnel : directive ngFor pour les version <17 et @if à partir de la v 17-->
 @if (action === "add"){
-<app-book-add [lastId]="books[books.length -1].id"></app-book-add>
+<app-book-add [lastId]="books[books.length -1].id"
+(bookCreated)="addBook($event)"></app-book-add>
 }
+<!-- We put the id of the last book as an attribute (Property Binding)-->
 <table class="table table-striped">
     <thead>
       <tr class="table-dark">
