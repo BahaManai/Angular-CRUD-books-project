@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { BookAddComponent } from "../book-add/book-add.component";
 import { Book } from '../Model/book';
+import { BookEditComponent } from "../book-edit/book-edit.component";
 
 @Component({
   selector: 'app-bookslist',
   standalone: true,
-  imports: [BookAddComponent],
+  imports: [BookAddComponent, BookEditComponent],
   templateUrl: './bookslist.component.html',
   styleUrl: './bookslist.component.css'
 })
@@ -17,12 +18,25 @@ export class BookslistComponent {
     new Book( 3,  "Atomic Habits 3",  "James Clear",  50)
   ];
   action ="";
+  selectedBookId! : number;
+  selectedBook!: Book;
   changeAction(action : string){
     //this est obligatoire pour utiliser les attributs de la classe
     this.action = action;
   }
   addBook(book:Book){
-    this.books = [...this.books,book];
+    this.books = [...this.books,book]; //les éléments du tableau + le nouvel élément
+    this.changeAction(""); // pour enlever le formulaire
+  }
+
+  getId(id: number) {
+    this.selectedBookId = id;
+    this.selectedBook = this.books.find(book => book.id === id)!;
+    this.changeAction('edit');
+  }
+
+  editBook(book:Book){
+    this.books[book.id - 1] = book;
     this.changeAction("");
   }
 }

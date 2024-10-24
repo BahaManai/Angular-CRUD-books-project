@@ -21,6 +21,5 @@ export class BookAddComponent {
   );
   // Lancer l'événement
   this.bookCreated.emit(newBook);
-  console.log(newBook);
   }
 }
