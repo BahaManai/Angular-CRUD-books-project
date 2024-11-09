@@ -36,7 +36,13 @@ export class BookslistComponent {
   }
 
   editBook(book:Book){
-    this.books[book.id - 1] = book;
+    //Méthode de map plus optimal
+    this.books = this.books.map(b => b.id === book.id? book:b);
     this.changeAction("");
+  }
+  deleteBook(id:number){
+    if(confirm("Est ce que vous êtes sure de la suppression ?")){
+      this.books = this.books.filter(b => b.id !== id);
+    }
   }
 }
